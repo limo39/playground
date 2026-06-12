@@ -10,10 +10,29 @@
     <div class="container">
         <header>
             <h1>Weather Activity Recommender</h1>
-            <p class="subtitle">Enter a weather forecast and discover the best activities to plan</p>
+            <p class="subtitle">Search a place to auto-load its weather, or fill in conditions manually</p>
         </header>
 
         <section class="input-section">
+            <!-- Location search -->
+            <div class="location-row">
+                <div class="location-input-wrap">
+                    <span class="location-icon">📍</span>
+                    <input type="text" id="locationInput" placeholder="Search a city or place… e.g. Tokyo, Paris, New York" autocomplete="off" />
+                    <ul id="locationSuggestions" class="suggestions-list hidden"></ul>
+                </div>
+                <button id="fetchWeatherBtn" class="fetch-btn">
+                    <span id="fetchBtnText">Get Weather</span>
+                    <span id="fetchSpinner" class="spinner hidden"></span>
+                </button>
+                <button id="geoBtn" class="geo-btn" title="Use my location">
+                    <span id="geoBtnIcon">🎯</span>
+                </button>
+            </div>
+            <div id="locationStatus" class="location-status hidden"></div>
+
+            <div class="divider"><span>or set manually</span></div>
+
             <div class="form-row">
                 <div class="form-group">
                     <label for="condition">Weather Condition</label>
@@ -35,10 +54,10 @@
                 <div class="form-group">
                     <label for="temperature">Temperature</label>
                     <div class="temp-input">
-                        <input type="number" id="temperature" placeholder="e.g. 72" min="-60" max="160">
+                        <input type="number" id="temperature" placeholder="e.g. 22" min="-60" max="60">
                         <div class="unit-toggle">
-                            <button class="unit-btn active" data-unit="F">&#176;F</button>
-                            <button class="unit-btn" data-unit="C">&#176;C</button>
+                            <button class="unit-btn" data-unit="F">&#176;F</button>
+                            <button class="unit-btn active" data-unit="C">&#176;C</button>
                         </div>
                     </div>
                 </div>
@@ -72,6 +91,12 @@
             <div class="forecast-summary">
                 <h2>Your Forecast</h2>
                 <div id="forecastDisplay" class="forecast-card"></div>
+            </div>
+
+            <!-- 7-day forecast strip (only shown when fetched from API) -->
+            <div id="weekForecastSection" class="week-forecast-section hidden">
+                <h2>7-Day Outlook</h2>
+                <div id="weekForecastStrip" class="week-forecast-strip"></div>
             </div>
 
             <div class="recommendations">
