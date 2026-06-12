@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Activity Recommender</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Weather Activity Recommender</h1>
+            <p class="subtitle">Enter a weather forecast and discover the best activities to plan</p>
+        </header>
+
+        <section class="input-section">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="condition">Weather Condition</label>
+                    <select id="condition">
+                        <option value="sunny">Sunny</option>
+                        <option value="partly-cloudy">Partly Cloudy</option>
+                        <option value="cloudy">Cloudy / Overcast</option>
+                        <option value="rainy">Rainy</option>
+                        <option value="thunderstorm">Thunderstorm</option>
+                        <option value="snowy">Snowy</option>
+                        <option value="windy">Windy</option>
+                        <option value="foggy">Foggy</option>
+                        <option value="hot">Hot / Heatwave</option>
+                        <option value="cold">Cold / Freezing</option>
+                        <option value="humid">Humid</option>
+                        <option value="hail">Hail</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="temperature">Temperature</label>
+                    <div class="temp-input">
+                        <input type="number" id="temperature" placeholder="e.g. 72" min="-60" max="160">
+                        <div class="unit-toggle">
+                            <button class="unit-btn active" data-unit="F">&#176;F</button>
+                            <button class="unit-btn" data-unit="C">&#176;C</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="wind">Wind</label>
+                    <select id="wind">
+                        <option value="calm">Calm</option>
+                        <option value="light">Light Breeze</option>
+                        <option value="moderate">Moderate Wind</option>
+                        <option value="strong">Strong Wind</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="timeOfDay">Time of Day</label>
+                    <select id="timeOfDay">
+                        <option value="morning">Morning</option>
+                        <option value="afternoon">Afternoon</option>
+                        <option value="evening">Evening</option>
+                        <option value="night">Night</option>
+                    </select>
+                </div>
+            </div>
+
+            <button id="recommendBtn" class="primary-btn">Get Recommendations</button>
+        </section>
+
+        <section id="results" class="results-section hidden">
+            <div class="forecast-summary">
+                <h2>Your Forecast</h2>
+                <div id="forecastDisplay" class="forecast-card"></div>
+            </div>
+
+            <div class="recommendations">
+                <h2>Recommended Activities</h2>
+                <div id="activityGrid" class="activity-grid"></div>
+            </div>
+
+            <div class="tips-section">
+                <h2>Quick Tips</h2>
+                <div id="tipsList" class="tips-list"></div>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
